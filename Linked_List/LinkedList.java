@@ -1,5 +1,4 @@
 package Linked_List;
-
 public class LinkedList{
     public class Node{
         int data;

@@ -19,7 +19,4 @@ class Tree{
         newNode.right = BuildTree(nodes);
         return newNode;
     }
-    public static void main(String args[]){
-
-    }
 }

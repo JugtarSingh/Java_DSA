@@ -1,9 +1,5 @@
-package Tree;
-
 import java.util.*;
-
 class BinaryTreeB {
-
     static class Node {
 
         int data;

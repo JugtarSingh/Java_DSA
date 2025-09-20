@@ -18,7 +18,7 @@ class LCA extends BinaryTreeB{
         p.remove(root);
         return false;
     }
-    Node LCAncestor(Node root, int n1, int n2){
+    Node LCAncestor1(Node root, int n1, int n2){
         ArrayList<Node> p1 = new ArrayList<>();
         ArrayList<Node> p2 = new ArrayList<>();
         getPath(root, p1, n1);
@@ -32,6 +32,20 @@ class LCA extends BinaryTreeB{
         }
         return p1.get(i-1);
     }
+    Node LCAncestor2(Node root,int n1, int n2){
+        if(root == null || root.data == n1 || root.data == n2){
+            return root;
+        }    
+        Node leftlca = LCAncestor2(root.left, n1, n2);
+        Node rightlca = LCAncestor2(root.right, n1, n2);
+        if(leftlca == null){
+            return rightlca;
+        }
+        if(rightlca == null){
+            return leftlca;
+        }
+        return root;
+    }
     public static void main(String args[]){
         int nodes[]={1,2,4,-1,-1,5,-1,-1,3,6,-1,-1,7,-1,-1};
         BinaryTree tree = new BinaryTree();
@@ -43,6 +57,6 @@ class LCA extends BinaryTreeB{
         //     System.out.println(i.data);
         // }
 
-        System.out.println(obj.LCAncestor(root, 4, 7).data);
+        System.out.println(obj.LCAncestor2(root, 6, 7).data);
     }
 }

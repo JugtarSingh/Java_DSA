@@ -46,6 +46,24 @@ class LCA extends BinaryTreeB{
         }
         return root;
     }
+    int Kth_Ancestor(Node root, int n , int k){
+        if(root == null){
+            return -1;
+        }
+        if(root.data == n){
+            return 0;
+        }
+        int left = Kth_Ancestor(root.left, n, k);
+        int right = Kth_Ancestor(root.right, n, k);
+        if(left == -1 && right == -1){
+            return -1;
+        }
+        int max = Math.max(left , right);
+        if(max+1 == k){
+            System.out.println(root.data);
+        }
+        return max+1;
+    }
     public static void main(String args[]){
         int nodes[]={1,2,4,-1,-1,5,-1,-1,3,6,-1,-1,7,-1,-1};
         BinaryTree tree = new BinaryTree();
@@ -57,6 +75,8 @@ class LCA extends BinaryTreeB{
         //     System.out.println(i.data);
         // }
 
-        System.out.println(obj.LCAncestor2(root, 6, 7).data);
+        // System.out.println(obj.LCAncestor2(root, 6, 7).data);
+
+        obj.Kth_Ancestor(root, 7, 2);
     }
 }
